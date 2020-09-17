@@ -22,3 +22,5 @@ today =  days[now.getDay()] + ", " +
 
 document.write(today);
 ```
+
+

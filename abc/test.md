@@ -3,7 +3,7 @@
 1. run `npm init`
 2. run `clone 123`
 
-```
+```js
 var now = new Date();
 
 var days = new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');

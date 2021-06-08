@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <form>
+      <div class="container">
+        <div class="form-group mt-3">
+          <input
+            type="text"
+            class="form-control"
+            id="upc"
+            placeholder="upc"
+            onkeyup="go()"
+            onchange="go()"
+            value="03600029145"
+          />
+        </div>
+        <div>
+          <svg id="barcode"></svg>
+        </div>
+      </div>
+    </form>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.4/JsBarcode.all.min.js"
+      integrity="sha512-9KXy/GLQQ+pPW7VwnI74DzjzUix9GINtAAPwWl4vzaaEqgfOeDgkea6UWM4xAvCeoeiBxzYepep2xxbkX3w/pg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      function go() {
+        let upc = document
+          .getElementById("upc")
+          .value.split(" ")
+          .join("")
+          .split("-")
+          .join("");
+
+        console.log(upc);
+
+        if (upc.length === 11) {
+          document.getElementById("barcode").style.display = "block";
+          console.log(upc);
+          JsBarcode("#barcode", upc, {
+            format: "UPC",
+
+            // width: 4,
+            // height: 40,
+            displayValue: true,
+          });
+        } else {
+          document.getElementById("barcode").style.display = "none";
+        }
+      }
+      go();
+    </script>
+  </body>
+</html>
